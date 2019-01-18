@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        android:fullBackupContent="false">
         <activity android:name=".CustomCollectionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
