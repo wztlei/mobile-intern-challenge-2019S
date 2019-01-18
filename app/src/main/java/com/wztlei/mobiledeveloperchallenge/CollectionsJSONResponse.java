@@ -1,6 +1,7 @@
 package com.wztlei.mobiledeveloperchallenge;
 
-public class JSONCollectionResponse {
+public class CollectionsJSONResponse {
+
     private CustomCollection[] customCollections;
 
     public CustomCollection[] getCustomCollections() {

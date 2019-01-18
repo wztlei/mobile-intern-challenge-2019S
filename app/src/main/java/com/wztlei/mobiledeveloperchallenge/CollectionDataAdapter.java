@@ -10,35 +10,43 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CollectionDataAdapter extends RecyclerView.Adapter<CollectionDataAdapter.ViewHolder> {
-    // TODO: https://medium.com/@dds861/json-parsing-using-retrofit-and-recycleview-2300d9fdcf15
+
+    private ArrayList<CustomCollection> customCollections;
+
+    CollectionDataAdapter(ArrayList<CustomCollection> customCollections) {
+        this.customCollections = customCollections;
+    }
 
     @NonNull
     @Override
-    public CollectionDataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+    public CollectionDataAdapter.ViewHolder onCreateViewHolder(
+            @NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.layout_collection_card, parent,false);
+        return new ViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull CollectionDataAdapter.ViewHolder viewHolder, int i) {
 
+    @Override
+    public void onBindViewHolder(@NonNull CollectionDataAdapter.ViewHolder holder, int position) {
+        holder.tv_name.setText(customCollections.get(position).getTitle());
+        holder.tv_version.setText(customCollections.get(position).getBodyHtml());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return customCollections.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_name;
         private TextView tv_version;
-        private TextView tv_api_level;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
-            tv_name = (TextView)itemView.findViewById(R.id.tv_name);
-            tv_version = (TextView)itemView.findViewById(R.id.tv_version);
-            tv_api_level = (TextView)itemView.findViewById(R.id.tv_api_level);
+            tv_name = itemView.findViewById(R.id.tv_name);
+            tv_version = itemView.findViewById(R.id.tv_version);
 
         }
     }
