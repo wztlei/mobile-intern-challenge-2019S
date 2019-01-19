@@ -1,4 +1,4 @@
-package com.wztlei.mobiledeveloperchallenge;
+package com.wztlei.mobiledeveloperchallenge.pojos;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -11,7 +11,6 @@ public class CustomCollectionList {
     CustomCollectionList(List<CustomCollection> custom_collections) {
         this.custom_collections = custom_collections;
     }
-
 
     public List<CustomCollection> getCustomCollections() {
         return custom_collections;

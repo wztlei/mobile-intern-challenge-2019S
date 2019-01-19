@@ -1,11 +1,21 @@
 package com.wztlei.mobiledeveloperchallenge;
 
-import java.util.List;
+import com.wztlei.mobiledeveloperchallenge.pojos.CollectList;
+import com.wztlei.mobiledeveloperchallenge.pojos.CustomCollectionList;
+import com.wztlei.mobiledeveloperchallenge.pojos.ProductList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Url;
 
 public interface RequestInterface {
-    @GET("custom_collections.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6")
-    Call<CustomCollectionList> getCollections();
+
+    @GET
+    Call<CustomCollectionList> getCustomCollections(@Url String url);
+
+    @GET
+    Call<CollectList> getCollects(@Url String url);
+
+    @GET
+    Call<ProductList> getProducts(@Url String url);
 }
