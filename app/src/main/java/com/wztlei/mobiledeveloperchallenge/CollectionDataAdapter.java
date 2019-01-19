@@ -29,24 +29,28 @@ public class CollectionDataAdapter extends RecyclerView.Adapter<CollectionDataAd
 
     @Override
     public void onBindViewHolder(@NonNull CollectionDataAdapter.ViewHolder holder, int position) {
-        holder.tv_name.setText(customCollections.get(position).getTitle());
-        holder.tv_version.setText(customCollections.get(position).getBodyHtml());
+        holder.tvTitle.setText(customCollections.get(position).getTitle());
+        holder.tvBodyHtml.setText(customCollections.get(position).getBodyHtml());
     }
 
     @Override
     public int getItemCount() {
-        return customCollections.size();
+        if (customCollections == null) {
+            return -1;
+        } else {
+            return customCollections.size();
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_name;
-        private TextView tv_version;
+        private TextView tvTitle;
+        private TextView tvBodyHtml;
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            tv_name = itemView.findViewById(R.id.tv_name);
-            tv_version = itemView.findViewById(R.id.tv_version);
+            tvTitle = itemView.findViewById(R.id.text_title);
+            tvBodyHtml = itemView.findViewById(R.id.text_body_html);
 
         }
     }
