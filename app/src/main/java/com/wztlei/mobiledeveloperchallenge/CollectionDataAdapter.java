@@ -27,12 +27,10 @@ import java.util.List;
 public class CollectionDataAdapter extends RecyclerView.Adapter<CollectionDataAdapter.CustomViewHolder> {
 
     private List<CustomCollection> dataList;
-    private Activity activity;
     private static final String TAG = "WL/CollectionAdapter";
 
-    CollectionDataAdapter(CustomCollectionList dataList, Activity activity){
+    CollectionDataAdapter(CustomCollectionList dataList){
         this.dataList = dataList.getCustomCollections();
-        this.activity = activity;
     }
 
 
@@ -67,12 +65,12 @@ public class CollectionDataAdapter extends RecyclerView.Adapter<CollectionDataAd
        // holder.textBodyHtml.setText(dataList.get(position).getBodyHtml());
 
         String imageSrc = dataList.get(position).getImage().getSrc();
+
         Log.d(TAG, imageSrc);
 
         new ImageLoadTask(imageSrc, holder.imageCollection).execute();
 
     }
-
 
     @Override
     public int getItemCount() {

@@ -17,7 +17,7 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     @SuppressLint("StaticFieldLeak")
     private ImageView imageView;
 
-    public ImageLoadTask(String url, ImageView imageView) {
+    ImageLoadTask(String url, ImageView imageView) {
         this.url = url;
         this.imageView = imageView;
     }
