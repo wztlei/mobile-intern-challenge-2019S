@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.wztlei.mobiledeveloperchallenge.pojos.Collect;
 import com.wztlei.mobiledeveloperchallenge.pojos.CollectList;
@@ -25,12 +27,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CollectionDetailsActivity extends AppCompatActivity {
 
-
     private long collectId;
     private String collectTitle;
     private String collectBodyHtml;
     private String collectImageSrc;
-
 
     private static final String UNUSED_BASE_URL = "https://www.example.com/";
     private static final String TAG = "WL/CollectionDetails";
@@ -52,6 +52,14 @@ public class CollectionDetailsActivity extends AppCompatActivity {
             collectBodyHtml = intentBundle.getString(Globals.COLLECT_BODY_HTML);
             collectImageSrc = intentBundle.getString(Globals.COLLECT_IMAGE_SRC);
         }
+
+        TextView textCollectTitle = findViewById(R.id.text_collect_title);
+        TextView textCollectBodyHtml = findViewById(R.id.text_collect_body_html);
+        ImageView imageCollectImage = findViewById(R.id.image_collect);
+
+        textCollectTitle.setText(collectTitle);
+        textCollectBodyHtml.setText(collectBodyHtml);
+        new ImageLoadTask(collectImageSrc, imageCollectImage).execute();
 
 
         ActionBar actionBar = getSupportActionBar();
